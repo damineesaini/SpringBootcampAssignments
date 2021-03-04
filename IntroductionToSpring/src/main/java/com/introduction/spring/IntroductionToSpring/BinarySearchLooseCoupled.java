@@ -6,13 +6,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class BinarySearchLooseCoupled  {
 
-
+    private String alterName;
+    private String timeComplexity;
     private SortAlgorithm sortAlgorithm;
 
     @Autowired
     public BinarySearchLooseCoupled(SortAlgorithm sortAlgorithm) {
         System.out.println("Constructor called of BinarySearchLooseCoupled");
         this.sortAlgorithm = sortAlgorithm;
+        this.alterName = "half-interval search";
+        this.timeComplexity = "O(logn)";
+    }
+
+    public String getAlterName() {
+        return alterName;
+    }
+
+    public String getTimeComplexity(){
+        return timeComplexity;
     }
 
     public boolean getSearchElement(int[] array, int searchElement){
