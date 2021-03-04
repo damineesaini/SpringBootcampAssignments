@@ -37,9 +37,11 @@ public class IntroductionToSpringApplication {
 				"(6) Perform Constructor Injection in a Spring Bean -> Done in BinarySearchLooselyCoupled class");
 		BinarySearchLooseCoupled binarySearchLooseCoupled2 = applicationContext.getBean(BinarySearchLooseCoupled.class);
 		searchElement = 89;
+		System.out.println("Properties of the BinarySearchLooseCoupled class");
+		System.out.println("alterName :" + binarySearchLooseCoupled2.getAlterName());
+		System.out.println("timeComplexity :" + binarySearchLooseCoupled2.getTimeComplexity());
 		elementFound = binarySearchLooseCoupled2.getSearchElement(array,searchElement);
 		if(elementFound)
 			System.out.println(searchElement + " found in array.");
 	}
-
 }
