@@ -15,7 +15,7 @@ public class BinarySearchLooseCoupled  {
     }
 
     public boolean getSearchElement(int[] array, int searchElement){
-
+        sortAlgorithm.sort(array);
         int first = 0 ,last = array.length - 1;
         int middle = (first + last)/2;
 
