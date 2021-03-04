@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BinarySearchLooseCoupled  {
 
-    @Autowired
+
     private SortAlgorithm sortAlgorithm;
 
+    @Autowired
     public BinarySearchLooseCoupled(SortAlgorithm sortAlgorithm) {
-        super();
         this.sortAlgorithm = sortAlgorithm;
     }
 
