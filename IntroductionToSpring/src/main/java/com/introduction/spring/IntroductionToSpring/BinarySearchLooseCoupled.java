@@ -1,21 +1,23 @@
 package com.introduction.spring.IntroductionToSpring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BinarySearchLooseCoupled  {
 
+    @Value("half-interval search")
     private String alterName;
+    @Value("O(logn)")
     private String timeComplexity;
+
     private SortAlgorithm sortAlgorithm;
 
     @Autowired
     public BinarySearchLooseCoupled(SortAlgorithm sortAlgorithm) {
         System.out.println("Constructor called of BinarySearchLooseCoupled");
         this.sortAlgorithm = sortAlgorithm;
-        this.alterName = "half-interval search";
-        this.timeComplexity = "O(logn)";
     }
 
     public String getAlterName() {

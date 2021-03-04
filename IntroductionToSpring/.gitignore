@@ -1,10 +1,11 @@
 HELP.md
 target/
-/.mvn
+
 !**/src/main/**/target/
 !**/src/test/**/target/
-/mvnw
-/mvnw.cmd
+mvnw
+mvnw.cmd
+
 ### STS ###
 .apt_generated
 .classpath
@@ -19,6 +20,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.mvn
 
 ### NetBeans ###
 /nbproject/private/
