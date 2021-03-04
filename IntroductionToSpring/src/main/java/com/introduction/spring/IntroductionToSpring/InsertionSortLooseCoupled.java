@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class InsertionSortLooseCoupled implements SortAlgorithm {
     public int[] sort(int[] numbers) {
+        System.out.println("Using insertion sort for sorting array");
         int n = numbers.length;
         for (int i = 1; i < n; ++i) {
             int key = numbers[i];

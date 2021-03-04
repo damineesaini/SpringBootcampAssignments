@@ -9,6 +9,7 @@ public class BubbleSortLooseCoupled implements SortAlgorithm{
 
     public int[] sort(int[] numbers)
     {
+        System.out.println("Using bubble sort for sorting array");
         int n = numbers.length;
         for (int i = 0; i < n-1; i++)
             for (int j = 0; j < n-i-1; j++)

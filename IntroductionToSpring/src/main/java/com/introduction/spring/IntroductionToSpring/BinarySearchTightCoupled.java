@@ -6,7 +6,7 @@ public class BinarySearchTightCoupled {
 
         InsertionSortTightCoupled insertionSort = new InsertionSortTightCoupled();
         insertionSort.sort(array);
-
+        System.out.println("Performing binary search");
         int first = 0 ,last = array.length - 1;
         int middle = (first + last)/2;
 

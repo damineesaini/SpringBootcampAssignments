@@ -11,11 +11,13 @@ public class BinarySearchLooseCoupled  {
 
     @Autowired
     public BinarySearchLooseCoupled(SortAlgorithm sortAlgorithm) {
+        System.out.println("Constructor called of BinarySearchLooseCoupled");
         this.sortAlgorithm = sortAlgorithm;
     }
 
     public boolean getSearchElement(int[] array, int searchElement){
         sortAlgorithm.sort(array);
+        System.out.println("Performing binary search");
         int first = 0 ,last = array.length - 1;
         int middle = (first + last)/2;
 
