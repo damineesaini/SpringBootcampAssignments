@@ -26,7 +26,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/{id}")
-    public Employee retrieveEmployeeById(@PathVariable int id) throws EmployeeNotFoundException {
+    public Employee retrieveEmployeeById(@PathVariable Integer id) throws EmployeeNotFoundException {
         Employee employee = employeeService.findOneById(id);
         if(employee == null)
             throw new EmployeeNotFoundException("Incorrect id");
@@ -52,7 +52,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/employees/delete/{id}")
-    public void deleteEmployee(@PathVariable int id) throws EmployeeNotFoundException {
+    public void deleteEmployee(@PathVariable Integer id) throws EmployeeNotFoundException {
         Employee employee = employeeService.deleteById(id);
         if(employee == null)
             throw new EmployeeNotFoundException("Incorrect id");
