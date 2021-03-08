@@ -33,6 +33,8 @@ public class EmployeeService {
         if(employee.getId()==0){
             employee.setId(++employeeCount);
         }
+        else
+            return null;
         employees.add(employee);
         return employee;
     }

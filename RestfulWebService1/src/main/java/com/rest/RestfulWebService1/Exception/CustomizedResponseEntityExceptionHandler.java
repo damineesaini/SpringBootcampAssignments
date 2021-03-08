@@ -1,5 +1,6 @@
 package com.rest.RestfulWebService1.Exception;
 
+import com.rest.RestfulWebService1.EmployeeIdExistException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,18 +18,17 @@ import java.util.Date;
 @RestController
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-        @ExceptionHandler(Exception.class)
-        public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
-            ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
-                    request.getDescription(false));
-            return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        @ExceptionHandler(EmployeeNotFoundException.class)
+        public final ResponseEntity<Object> handleEmployeeNotFoundException(EmployeeNotFoundException exception, WebRequest request) {
+            ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(),
+                request.getDescription(false));
+            return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
         }
 
-        @ExceptionHandler(EmployeeNotFoundException.class)
-        public final ResponseEntity<Object> handleUserNotFoundException(EmployeeNotFoundException ex, WebRequest request) {
-            ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
-                    request.getDescription(false));
-            return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+        @ExceptionHandler(EmployeeIdExistException.class)
+        public final ResponseEntity<Object> handleEmployeeIdExistException(EmployeeIdExistException exception, WebRequest request){
+            ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
+            return new ResponseEntity(exceptionResponse, HttpStatus.METHOD_NOT_ALLOWED);
         }
 
         @Override
@@ -38,5 +38,5 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                     ex.getBindingResult().toString());
             return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
         }
-    }
+}
 

@@ -5,7 +5,6 @@ import javax.validation.constraints.*;
 public class Employee {
     private int id;
 
-//    @Size(min = 2)
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]*")
     private String name;
 

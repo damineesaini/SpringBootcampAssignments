@@ -34,8 +34,10 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public ResponseEntity<Object> createEmployee(@Valid @RequestBody Employee employee){
+    public ResponseEntity<Object> createEmployee(@Valid @RequestBody Employee employee) throws EmployeeIdExistException {
         Employee newEmployee = employeeService.createNewEmployee(employee);
+        if(newEmployee == null)
+            throw new EmployeeIdExistException("Id already exist, don't define an id.");
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(newEmployee.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
