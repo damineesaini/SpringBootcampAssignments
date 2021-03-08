@@ -7,6 +7,7 @@ public class Employee {
     private Integer id;
 
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]*")
+    @Size(min = 3)
     private String name;
 
     @Min(value = 18)
