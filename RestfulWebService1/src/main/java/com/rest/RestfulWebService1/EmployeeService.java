@@ -21,9 +21,9 @@ public class EmployeeService {
         return employees;
     }
 
-    public Employee findOneById(int id){
+    public Employee findOneById(Integer id){
         for (Employee employee:employees) {
-                if(id == employee.getId())
+                if(id.equals(employee.getId()))
                     return employee;
         }
         return null;
@@ -52,11 +52,11 @@ public class EmployeeService {
         return null;
     }
 
-    public Employee deleteById(int id){
+    public Employee deleteById(Integer id){
         Iterator<Employee> iterator = employees.iterator();
         while (iterator.hasNext()){
             Employee employee = iterator.next();
-            if(employee.getId() == id){
+            if(employee.getId().equals(id)){
                 iterator.remove();
                 return employee;
             }
