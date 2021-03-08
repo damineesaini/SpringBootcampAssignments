@@ -33,7 +33,7 @@ public class EmployeeController {
         return employee;
     }
 
-    @PostMapping("/employees")
+    @PostMapping("/employees/create")
     public ResponseEntity<Object> createEmployee(@Valid @RequestBody Employee employee) throws EmployeeIdExistException {
         Employee newEmployee = employeeService.createNewEmployee(employee);
         if(newEmployee == null)
@@ -42,7 +42,7 @@ public class EmployeeController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("/employees")
+    @PutMapping("/employees/update")
     public ResponseEntity<Object> updateEmployee(@Valid @RequestBody Employee employee) throws EmployeeNotFoundException {
         Employee employee1 = employeeService.updateEmployeeDetails(employee);
             if (employee1 == null)
@@ -51,7 +51,7 @@ public class EmployeeController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/employees/delete/{id}")
     public void deleteEmployee(@PathVariable int id) throws EmployeeNotFoundException {
         Employee employee = employeeService.deleteById(id);
         if(employee == null)

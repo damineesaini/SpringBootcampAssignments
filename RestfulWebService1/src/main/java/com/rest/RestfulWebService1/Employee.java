@@ -3,22 +3,23 @@ package com.rest.RestfulWebService1;
 import javax.validation.constraints.*;
 
 public class Employee {
-    private int id;
+
+    private Integer id;
 
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]*")
     private String name;
 
     @Min(value = 18)
     @Max(value = 60)
-    private int age;
+    private Integer age;
 
-    public Employee(int id, String name, int age) {
+    public Employee(Integer id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -34,7 +35,7 @@ public class Employee {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 

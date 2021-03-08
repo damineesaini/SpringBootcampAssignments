@@ -30,7 +30,7 @@ public class EmployeeService {
     }
 
     public Employee createNewEmployee(Employee employee){
-        if(employee.getId()==0){
+        if(employee.getId()==null){
             employee.setId(++employeeCount);
         }
         else
@@ -42,7 +42,7 @@ public class EmployeeService {
     public Employee updateEmployeeDetails(Employee employee){
         for(Employee employee1:employees)
         {
-            if(employee1.getId() == employee.getId())
+            if(employee1.getId().equals(employee.getId()))
             {
                 employee1.setName(employee.getName());
                 employee1.setAge(employee.getAge());
