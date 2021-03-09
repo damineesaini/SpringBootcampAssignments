@@ -3,6 +3,8 @@ package com.restApi2.RestfulWebServices2.ContentNegotiation;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -16,15 +18,18 @@ import java.util.ArrayList;
 
 @RestController
 public class UserController {
+
     @Autowired
     private UserService userService;
 
     @GetMapping("/users")
+    @ApiModelProperty(notes = "Fetch list of users")
     public ArrayList<User> retrieveAllUsers(){
         return userService.findAll();
     }
 
     @PostMapping("/users-create")
+    @ApiModelProperty(notes = "create a new user")
     public ResponseEntity<Object> createUser(@Valid @RequestBody User user) throws UserNotFoundException {
         User newUser = userService.createUser(user);
         if (newUser == null)
@@ -34,14 +39,16 @@ public class UserController {
     }
 
     @DeleteMapping("/users-delete/{id}")
+    @ApiModelProperty(notes = "delete an existing user")
     public void delete(@PathVariable Integer id) throws UserNotFoundException {
         User user = userService.deleteUserById(id);
         if(user == null)
             throw new UserNotFoundException("Incorrect id");
     }
 
-    //HATEOAS
+    //HATEOAS implementation
     @GetMapping("/user-hateoas/{id}")
+    @ApiModelProperty(notes = "showing hateoas implementation")
     public EntityModel<User> retrieveUser(@PathVariable int id) throws UserNotFoundException {
         User user = userService.findOneById(id);
 

@@ -5,11 +5,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.*;
 
-@ApiModel(description = "User Details")
+@ApiModel(description = "This is a User Bean")
 public class User {
-    @ApiModelProperty(notes ="used to recognize user uniquely")
+
     Integer id;
 
+    @ApiModelProperty(notes ="name should only start with alphabet and contains alphabets and space.Its minimum no of characters allowed is 2.")
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]*")
     @Size(min = 2)
     String name;

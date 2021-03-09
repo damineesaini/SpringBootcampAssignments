@@ -1,10 +1,12 @@
 package com.restApi2.RestfulWebServices2.Filtering;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import io.swagger.annotations.ApiModel;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@ApiModel(description = "this is a user bean used for dynamic filter implementation")
 public class UserDynamicFilterBean {
     Integer id;
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.restApi2.RestfulWebServices2.ContentNegotiation.UserNotFoundException;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ public class UserFilteringController {
     private UserDynamicFilterService userDynamicFilterService;
 
     @PostMapping("/users-create-static-filter")
+    @ApiModelProperty(notes = "static filtering of password field")
     public UserStaticFilterBean createUserStaticFilter(@Valid @RequestBody UserStaticFilterBean userStaticFilterBean) throws UserNotFoundException {
         UserStaticFilterBean newUser = userStaticFilterService.createUserStaticFilter(userStaticFilterBean);
         if (newUser == null)
@@ -33,6 +35,7 @@ public class UserFilteringController {
     }
 
     @PostMapping("/users-create-dynamic-filter")
+    @ApiModelProperty(notes = "dynamic filtering of password field")
     public UserDynamicFilterBean createUserDynamicFilter(@Valid @RequestBody UserDynamicFilterBean userDynamicFilterBean) throws UserNotFoundException {
         UserDynamicFilterBean newUser = userDynamicFilterService.createUserDynamicFilter(userDynamicFilterBean);
         if (newUser == null)
