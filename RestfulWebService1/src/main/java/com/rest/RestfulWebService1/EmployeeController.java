@@ -12,6 +12,7 @@ import java.util.ArrayList;
 @RestController
 public class EmployeeController {
 
+    // Ques 1 to display welcome message
     @GetMapping("/")
     public String welcomePage(){
         return "Welcome to spring boot";
@@ -20,11 +21,13 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    // Ques 3  to get list of employees.
     @GetMapping("/employees")
     public ArrayList<Employee> retrieveAllEmployees(){
         return employeeService.findAll();
     }
 
+    // Ques 4 using path variable to get one employee
     @GetMapping("/employees/{id}")
     public Employee retrieveEmployeeById(@PathVariable Integer id) throws EmployeeNotFoundException {
         Employee employee = employeeService.findOneById(id);
@@ -33,6 +36,7 @@ public class EmployeeController {
         return employee;
     }
 
+    // Ques 5  to create a new employee.
     @PostMapping("/employees/create")
     public ResponseEntity<Object> createEmployee(@Valid @RequestBody Employee employee) throws EmployeeIdExistException {
         Employee newEmployee = employeeService.createNewEmployee(employee);
@@ -42,6 +46,15 @@ public class EmployeeController {
         return ResponseEntity.created(location).build();
     }
 
+    //Ques 7 to delete employee
+    @DeleteMapping("/employees/delete/{id}")
+    public void deleteEmployee(@PathVariable Integer id) throws EmployeeNotFoundException {
+        Employee employee = employeeService.deleteById(id);
+        if(employee == null)
+            throw new EmployeeNotFoundException("Incorrect id");
+    }
+
+    //Ques 8 to update employee
     @PutMapping("/employees/update")
     public ResponseEntity<Object> updateEmployee(@Valid @RequestBody Employee employee) throws EmployeeNotFoundException {
         Employee employee1 = employeeService.updateEmployeeDetails(employee);
@@ -51,10 +64,4 @@ public class EmployeeController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/employees/delete/{id}")
-    public void deleteEmployee(@PathVariable Integer id) throws EmployeeNotFoundException {
-        Employee employee = employeeService.deleteById(id);
-        if(employee == null)
-            throw new EmployeeNotFoundException("Incorrect id");
-    }
 }
