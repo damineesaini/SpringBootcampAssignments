@@ -11,7 +11,7 @@ public class RestfulWebService1Application {
 	}
 
 	/* Details about the question structure
-	*	Ques1 done in the EmployeeController class
+	*	Ques1 done in the Ques1 package
 	*	Ques2 -> Employee class and EmployeeService class
 	* 	Ques3 - Ques5 -> EmployeeController class
 	*	Ques6 -> Exception package, EmployeeNotFound class
