@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Welcome {
     private String message;
 
-    public Welcome(){};
+    public Welcome(){}
 
     public Welcome(String message){
         this.message = message;
