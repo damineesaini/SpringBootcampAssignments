@@ -18,7 +18,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
 
-    // Ques 3  to get list of employees.
+    // Ques 3  to get list of all employees.
     @GetMapping()
     public ArrayList<Employee> retrieveAllEmployees(){
         return employeeService.findAll();
