@@ -17,18 +17,19 @@ import java.net.URI;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping()
     @ApiModelProperty(notes = "Fetch list of users")
     public ArrayList<User> retrieveAllUsers(){
         return userService.findAll();
     }
 
-    @PostMapping("/users-create")
+    @PostMapping()
     @ApiModelProperty(notes = "create a new user")
     public ResponseEntity<Object> createUser(@Valid @RequestBody User user) throws UserNotFoundException {
         User newUser = userService.createUser(user);
@@ -38,7 +39,7 @@ public class UserController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/users-delete/{id}")
+    @DeleteMapping("/{id}")
     @ApiModelProperty(notes = "delete an existing user")
     public void delete(@PathVariable Integer id) throws UserNotFoundException {
         User user = userService.deleteUserById(id);
@@ -47,7 +48,7 @@ public class UserController {
     }
 
     //HATEOAS implementation
-    @GetMapping("/user-hateoas/{id}")
+    @GetMapping("/{id}")
     @ApiModelProperty(notes = "showing hateoas implementation")
     public EntityModel<User> retrieveUser(@PathVariable int id) throws UserNotFoundException {
         User user = userService.findOneById(id);

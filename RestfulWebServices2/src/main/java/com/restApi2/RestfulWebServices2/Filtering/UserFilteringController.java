@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 
 
 @RestController
+@RequestMapping("/users")
 public class UserFilteringController {
 
     @Autowired
@@ -25,8 +27,9 @@ public class UserFilteringController {
     @Autowired
     private UserDynamicFilterService userDynamicFilterService;
 
-    @PostMapping("/users-create-static-filter")
-    @ApiModelProperty(notes = "static filtering of password field")
+
+    @PostMapping("/static")
+    @ApiModelProperty(notes = "static filtering of password field , in request body pass name and password")
     public UserStaticFilterBean createUserStaticFilter(@Valid @RequestBody UserStaticFilterBean userStaticFilterBean) throws UserNotFoundException {
         UserStaticFilterBean newUser = userStaticFilterService.createUserStaticFilter(userStaticFilterBean);
         if (newUser == null)
@@ -34,8 +37,8 @@ public class UserFilteringController {
         return newUser;
     }
 
-    @PostMapping("/users-create-dynamic-filter")
-    @ApiModelProperty(notes = "dynamic filtering of password field")
+    @PostMapping("/dynamic")
+    @ApiModelProperty(notes = "dynamic filtering of password field , in request body pass name and password")
     public UserDynamicFilterBean createUserDynamicFilter(@Valid @RequestBody UserDynamicFilterBean userDynamicFilterBean) throws UserNotFoundException {
         UserDynamicFilterBean newUser = userDynamicFilterService.createUserDynamicFilter(userDynamicFilterBean);
         if (newUser == null)

@@ -7,19 +7,20 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/welcome")
 public class WelcomeController {
 
     @Autowired
     private MessageSource messageSource;
 
-    @GetMapping(path = "/welcome-internationalization")
+    @GetMapping()
     @ApiModelProperty(notes = "good morning message according to locale")
     public String welcome(){
         return messageSource.getMessage("good.morning.message",null, LocaleContextHolder.getLocale());
     }
 
 
-    @GetMapping(path = "/welcome")
+    @GetMapping("/param")
     @ResponseBody
     @ApiModelProperty(notes = "displays name given in params along with good morning message")
     public String welcomeName(@RequestParam(name = "name",defaultValue = "Guest") String name){
