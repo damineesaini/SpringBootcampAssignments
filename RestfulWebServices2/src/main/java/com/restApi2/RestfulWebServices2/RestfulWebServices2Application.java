@@ -31,5 +31,4 @@ public class RestfulWebServices2Application {
 	* 	*Versioning Restful APIs - both questions done in Versioning package
 	* 	*HATEOAS - done in ContentNegotiation package in UserController class
 	* */
-
 }
