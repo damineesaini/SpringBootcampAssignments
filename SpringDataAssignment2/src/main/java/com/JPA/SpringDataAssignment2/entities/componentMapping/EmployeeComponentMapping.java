@@ -7,10 +7,11 @@ import javax.persistence.*;
 public class EmployeeComponentMapping {
     @Id
     private int id;
-    @Column(name = "empname")
-    private String name;
+    private String firstName;
+    private String lastName;
+    private int age;
     @Embedded
-    private Address address;
+    Salary salary;
 
     public int getId() {
         return id;
@@ -20,19 +21,35 @@ public class EmployeeComponentMapping {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
     }
 }

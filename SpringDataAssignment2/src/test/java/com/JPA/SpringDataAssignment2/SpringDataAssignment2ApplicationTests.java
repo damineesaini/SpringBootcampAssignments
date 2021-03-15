@@ -2,8 +2,8 @@ package com.JPA.SpringDataAssignment2;
 
 import com.JPA.SpringDataAssignment2.entities.InheritanceMappingTablePerClass.CheckTablePerClass;
 import com.JPA.SpringDataAssignment2.entities.InheritanceMappingTablePerClass.CreditCardTablePerClass;
-import com.JPA.SpringDataAssignment2.entities.componentMapping.Address;
 import com.JPA.SpringDataAssignment2.entities.componentMapping.EmployeeComponentMapping;
+import com.JPA.SpringDataAssignment2.entities.componentMapping.Salary;
 import com.JPA.SpringDataAssignment2.entities.inheritanceMappingJoined.CheckJoinedStrategy;
 import com.JPA.SpringDataAssignment2.entities.inheritanceMappingJoined.CreditCardJoinedStrategy;
 import com.JPA.SpringDataAssignment2.entities.inheritanceMappingSingleTable.CheckSingleTable;
@@ -171,14 +171,15 @@ class SpringDataAssignment2ApplicationTests {
 	public void testCreateWithComponentMapping(){
 		EmployeeComponentMapping employeeComponentMapping = new EmployeeComponentMapping();
 		employeeComponentMapping.setId(1);
-		employeeComponentMapping.setName("Daminee");
-		Address address = new Address();
-		address.setStreetAddress("street no 123");
-		address.setCity("lucknow");
-		address.setState("up");
-		address.setCountry("India");
-		address.setZipcode("110041");
-		employeeComponentMapping.setAddress(address);
+		employeeComponentMapping.setFirstName("Daminee");
+		employeeComponentMapping.setLastName("Saini");
+		employeeComponentMapping.setAge(23);
+		Salary salary = new Salary();
+		salary.setBasicSalary(25000);
+		salary.setBonusSalary(10000);
+		salary.setTaxAmount(15000);
+		salary.setSpecialAllowanceSalary(20000);
+		employeeComponentMapping.setSalary(salary);
 		employeeComponentMappingRepository.save(employeeComponentMapping);
 	}
 
