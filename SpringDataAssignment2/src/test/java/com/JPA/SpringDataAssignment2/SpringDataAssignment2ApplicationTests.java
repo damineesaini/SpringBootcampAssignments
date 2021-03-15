@@ -83,20 +83,20 @@ class SpringDataAssignment2ApplicationTests {
 		}
  	}
 
-//	@Test
-//	@Transactional
-//	//@Rollback(value = true)
-//	public void testUpdateSalaryOfEmployeeLessThanAvg(){
-//		double salary = 6800;
-//		employeeRepository.updateSalaryOfEmployeeLessThanAvg(salary);
-//	}
-//
-//	@Test
-//	@Transactional
-////	@Rollback(value = false)
-//	public void testDeleteEmployeeSalary(){
-//		employeeRepository.deleteEmployeeSalary();
-//	}
+	@Test
+	@Transactional
+	public void testUpdateSalaryOfEmployeeLessThanAvg(){
+		double salary = 6800;
+		double avgSalary = employeeRepository.findAverageSalary();
+		employeeRepository.updateSalaryOfEmployeeLessThanAvg(salary,avgSalary);
+	}
+
+	@Test
+	@Transactional
+	public void testDeleteEmployeeSalary(){
+		double minSalary = employeeRepository.findMinimumSalary();
+		employeeRepository.deleteEmployeeSalary(minSalary);
+	}
 
 	@Test
 	public void testGetAllEmployeeWhoseNameEndsWith(){

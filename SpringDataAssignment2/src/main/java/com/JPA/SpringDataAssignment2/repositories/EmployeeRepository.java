@@ -18,13 +18,19 @@ public interface EmployeeRepository extends CrudRepository<Employee,Integer> {
     @Query("select emp.firstName,emp.lastName from Employee emp where emp.salary > (select AVG(salary) from Employee)")
     List<Object[]> findAllEmployeeBySalaryGreaterThan( Sort sort);
 
-//    @Modifying
-//    @Query("update Employee set salary =:salary where salary < (select avgSalary from (select avg(salary) from Employee) as t)")
-//    void updateSalaryOfEmployeeLessThanAvg(@Param("salary") double salary);
+    @Query("select avg(salary) from Employee")
+    double findAverageSalary();
 
-//    @Modifying()
-//    @Query("delete from Employee where salary IN (select dt.minSalary from ( select min(salary) as minSalary from Employee) as dt)")
-//    void deleteEmployeeSalary();
+    @Modifying
+    @Query("update Employee set salary =:salary where salary < :avgSalary")
+    void updateSalaryOfEmployeeLessThanAvg(@Param("salary") double salary,@Param("avgSalary") double avgSalary);
+
+    @Query("select min(salary) from Employee")
+    double findMinimumSalary();
+
+    @Modifying()
+    @Query("delete from Employee where salary=:minSalary")
+    void deleteEmployeeSalary(@Param("minSalary") double salary);
 
     @Query(value = "select empId,empFirstName from employeeTable where empLastName like '%singh'", nativeQuery = true)
     List<Object[]> getAllEmployeeWhoseNameEndsWith();
