@@ -13,7 +13,7 @@ public class WelcomeController {
     @Autowired
     private MessageSource messageSource;
 
-    @GetMapping()
+    @GetMapping
     @ApiModelProperty(notes = "good morning message according to locale")
     public String welcome(){
         return messageSource.getMessage("good.morning.message",null, LocaleContextHolder.getLocale());

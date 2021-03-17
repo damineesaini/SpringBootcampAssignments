@@ -23,13 +23,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping()
+    @GetMapping
     @ApiModelProperty(notes = "Fetch list of users")
     public ArrayList<User> retrieveAllUsers(){
         return userService.findAll();
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiModelProperty(notes = "create a new user")
     public ResponseEntity<Object> createUser(@Valid @RequestBody User user) throws UserNotFoundException {
         User newUser = userService.createUser(user);
