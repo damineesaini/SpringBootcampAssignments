@@ -75,7 +75,7 @@ class SpringDataAssignment2ApplicationTests {
 	}
 
 	@Test
-	public void testFindAllStudentsPartial(){
+	public void testFindAllEmployeePartialData(){
 		Sort sort = Sort.by("age").ascending().and(Sort.by("salary").descending());
 		List<Object[]> partialData = employeeRepository.findAllEmployeeBySalaryGreaterThan(sort);
 		for (Object[] objects : partialData) {
