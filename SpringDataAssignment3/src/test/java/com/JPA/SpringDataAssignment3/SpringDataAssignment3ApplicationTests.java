@@ -92,19 +92,19 @@ class SpringDataAssignment3ApplicationTests {
 	@Test
 	public void testCreateAuthorOneToManyUnidirectional(){
 		AuthorOneToManyUnidirectional author = new AuthorOneToManyUnidirectional();
-		author.setName("Daminee");
+		author.setName("Bhavin");
 
 		Address address = new Address();
 		address.setStreetNumber("123b");
-		address.setLocation("mundka");
+		address.setLocation("Pachim Vihar");
 		address.setState("Delhi");
 		author.setAddress(address);
 
 		BookOneToManyUnidirectional book = new BookOneToManyUnidirectional();
-		book.setBookName("java");
+		book.setBookName("c++");
 
 		BookOneToManyUnidirectional book2 = new BookOneToManyUnidirectional();
-		book2.setBookName("spring boot");
+		book2.setBookName("c#");
 
 		author.addBookName(book);
 		author.addBookName(book2);

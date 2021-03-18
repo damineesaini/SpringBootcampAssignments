@@ -11,7 +11,7 @@ public class BookOneToOne {
     @Column(name = "book_name")
     private String bookName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "author_id")
     private AuthorOneToOne author;
 
