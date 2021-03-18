@@ -1,9 +1,11 @@
 package com.JPA.SpringDataAssignment3.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Address {
+    @Column(name = "street_number")
     private String  streetNumber;
     private String location;
     private String State;

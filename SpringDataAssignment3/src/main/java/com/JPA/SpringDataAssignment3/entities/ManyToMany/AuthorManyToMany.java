@@ -12,14 +12,14 @@ public class AuthorManyToMany {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "authorName")
+    @Column(name = "author_name")
     private String name;
 
     @Embedded
     private Address address;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "authors_books",joinColumns = @JoinColumn(name = "authorId",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "bookId",referencedColumnName = "id"))
+    @JoinTable(name = "authors_books",joinColumns = @JoinColumn(name = "author_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "book_id",referencedColumnName = "id"))
     private Set<BookManyToMany> books;
 
     public Set<BookManyToMany> getBooks() {

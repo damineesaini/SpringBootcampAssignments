@@ -1,4 +1,4 @@
-package com.JPA.SpringDataAssignment3.entities.OneToMany;
+package com.JPA.SpringDataAssignment3.entities.OneToManyUnidirectional;
 
 import com.JPA.SpringDataAssignment3.entities.Address;
 
@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="author")
-public class AuthorOneToMany {
+@Table(name = "author")
+public class AuthorOneToManyUnidirectional {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,15 +18,16 @@ public class AuthorOneToMany {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "author",cascade =CascadeType.ALL)
-    private Set<BookManyToOne> bookSet;
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name="author_id")
+    private Set<BookOneToManyUnidirectional> books;
 
-    public Set<BookManyToOne> getBookSet() {
-        return bookSet;
+    public Set<BookOneToManyUnidirectional> getBookSet() {
+        return books;
     }
 
-    public void setBookSet(Set<BookManyToOne> bookSet) {
-        this.bookSet = bookSet;
+    public void setBookSet(Set<BookOneToManyUnidirectional> bookSet) {
+        this.books = bookSet;
     }
 
     public int getId() {
@@ -53,13 +54,12 @@ public class AuthorOneToMany {
         this.address = address;
     }
 
-    public void addBookName(BookManyToOne book){
+    public void addBookName(BookOneToManyUnidirectional book){
         if(book!=null){
-            if(bookSet==null){
-                bookSet=new HashSet<>();
+            if(books==null){
+                books=new HashSet<>();
             }
-            book.setAuthor(this);
-            bookSet.add(book);
+            books.add(book);
         }
     }
 }

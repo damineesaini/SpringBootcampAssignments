@@ -11,7 +11,7 @@ public class AuthorOneToOne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "authorName")
+    @Column(name = "author_name")
     private String name;
 
     @Embedded

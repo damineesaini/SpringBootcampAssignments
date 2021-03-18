@@ -8,10 +8,11 @@ public class BookOneToOne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "book_name")
     private String bookName;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "authorId")
+    @JoinColumn(name = "author_id")
     private AuthorOneToOne author;
 
     public AuthorOneToOne getAuthor() {

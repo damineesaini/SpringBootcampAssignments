@@ -1,27 +1,15 @@
-package com.JPA.SpringDataAssignment3.entities.OneToMany;
+package com.JPA.SpringDataAssignment3.entities.OneToManyUnidirectional;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
-public class BookManyToOne {
+public class BookOneToManyUnidirectional {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "book_name")
     private String bookName;
-
-    @ManyToOne
-    @JoinColumn(name="author_id")
-    private AuthorOneToMany author;
-
-    public AuthorOneToMany getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(AuthorOneToMany author) {
-        this.author = author;
-    }
 
     public int getId() {
         return id;

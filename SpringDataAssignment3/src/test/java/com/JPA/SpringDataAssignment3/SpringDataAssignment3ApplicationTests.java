@@ -5,12 +5,15 @@ import com.JPA.SpringDataAssignment3.entities.ManyToMany.AuthorManyToMany;
 import com.JPA.SpringDataAssignment3.entities.ManyToMany.BookManyToMany;
 import com.JPA.SpringDataAssignment3.entities.OneToMany.AuthorOneToMany;
 import com.JPA.SpringDataAssignment3.entities.OneToMany.BookManyToOne;
+import com.JPA.SpringDataAssignment3.entities.OneToManyUnidirectional.AuthorOneToManyUnidirectional;
+import com.JPA.SpringDataAssignment3.entities.OneToManyUnidirectional.BookOneToManyUnidirectional;
 import com.JPA.SpringDataAssignment3.entities.OneToOne.AuthorOneToOne;
 import com.JPA.SpringDataAssignment3.entities.OneToOne.BookOneToOne;
 import com.JPA.SpringDataAssignment3.entities.Ques3and4.Author;
 import com.JPA.SpringDataAssignment3.entities.Ques3and4.Subject;
 import com.JPA.SpringDataAssignment3.repositories.ManyToMany.AuthorRepoManyToMany;
 import com.JPA.SpringDataAssignment3.repositories.OneToMany.AuthorRepoOneToMany;
+import com.JPA.SpringDataAssignment3.repositories.OneToManyUnidirectional.AuthorRepoOneToManyUnidirectional;
 import com.JPA.SpringDataAssignment3.repositories.OneToOne.AuthorRepoOneToOne;
 import com.JPA.SpringDataAssignment3.repositories.Ques3and4.AuthorRepository;
 import org.junit.jupiter.api.Test;
@@ -27,6 +30,9 @@ class SpringDataAssignment3ApplicationTests {
 
 	@Autowired
 	AuthorRepoOneToMany authorRepoOneToMany;
+
+	@Autowired
+	AuthorRepoOneToManyUnidirectional authorRepoOneToManyUnidirectional;
 
 	@Autowired
 	AuthorRepoOneToOne authorRepoOneToOne;
@@ -81,6 +87,29 @@ class SpringDataAssignment3ApplicationTests {
 		author.setBook(book);
 
 		authorRepoOneToOne.save(author);
+	}
+
+	@Test
+	public void testCreateAuthorOneToManyUnidirectional(){
+		AuthorOneToManyUnidirectional author = new AuthorOneToManyUnidirectional();
+		author.setName("Daminee");
+
+		Address address = new Address();
+		address.setStreetNumber("123b");
+		address.setLocation("mundka");
+		address.setState("Delhi");
+		author.setAddress(address);
+
+		BookOneToManyUnidirectional book = new BookOneToManyUnidirectional();
+		book.setBookName("java");
+
+		BookOneToManyUnidirectional book2 = new BookOneToManyUnidirectional();
+		book2.setBookName("spring boot");
+
+		author.addBookName(book);
+		author.addBookName(book2);
+
+		authorRepoOneToManyUnidirectional.save(author);
 	}
 
 	@Test

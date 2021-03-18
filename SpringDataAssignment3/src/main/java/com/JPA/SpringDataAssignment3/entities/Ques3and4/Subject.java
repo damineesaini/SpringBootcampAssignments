@@ -11,10 +11,11 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "subject_name")
     private String subjectName;
 
     @ManyToOne
-    @JoinColumn(name = "authorId")
+    @JoinColumn(name = "author_id")
     private Author author;
 
     public int getId() {

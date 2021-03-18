@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "bookTable")
+@Table(name = "book_table")
 public class BookManyToMany {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "book_name")
     private String bookName;
 
     @ManyToMany(mappedBy = "books")
